@@ -4,7 +4,13 @@ import UserContext from "../context/UserContext";
 export default function Login() {
   const [userName, setUsername] = useState();
   const [password, setPassword] = useState();
-  function handleSubmit() {}
+
+  const { setUser } = useContext(UserContext);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setUser({ userName, password });
+  }
 
   return (
     <div>
@@ -18,7 +24,7 @@ export default function Login() {
       <input
         type="text"
         placeholder="username"
-        value={userName}
+        value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleSubmit}>Submit</button>
